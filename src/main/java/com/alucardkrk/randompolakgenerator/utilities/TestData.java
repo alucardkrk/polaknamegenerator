@@ -1,0 +1,59 @@
+package com.alucardkrk.randompolakgenerator.utilities;
+
+import com.alucardkrk.randompolakgenerator.persongenerator.Man;
+import com.alucardkrk.randompolakgenerator.persongenerator.Woman;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+public class TestData {
+    Connection connection;
+
+
+
+
+
+
+    public String getRandomPersonParam(String param, String table) throws SQLException {
+        ResultSet resultSet = getQueryResult("SELECT "+param+" FROM "+ table +" ORDER BY Rand() LIMIT 1");
+        String result = "";
+
+        resultSet.next();
+        result = resultSet.getString(param);
+        connection.close();
+        return result.substring(0,1).toUpperCase() + result.substring(1).toLowerCase();
+
+    }
+
+    public Woman generateRandomWoman() throws SQLException {
+        String name = getRandomPersonParam("imie", "imiona_zenskie");
+        String surname = getRandomPersonParam("nazwisko", "nazwiska_zenskie");
+        String city = getRandomPersonParam("nazwa", "miasta");
+        String street = getRandomPersonParam("nazwa", "ulice");
+        return new Woman(name, surname,city,street);
+    }
+    public Man generateRandomMan() throws SQLException {
+        String name = getRandomPersonParam("imie", "imiona_meskie");
+        String surname = getRandomPersonParam("nazwisko", "nazwiska_meskie");
+        String city = getRandomPersonParam("nazwa", "miasta");
+        String street = getRandomPersonParam("nazwa", "ulice");
+        return new Man(name, surname,city,street);
+    }
+
+
+
+    private ResultSet getQueryResult(String query){
+
+        connection = DatabaseConnection.getConnection();
+        try {
+            PreparedStatement statement = connection.prepareStatement(query);
+            return statement.executeQuery();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+}

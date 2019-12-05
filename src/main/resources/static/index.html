@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <title>Generator danych losowych</title> 
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE =edge,chrome=1"/>
+    <meta name ="description" content="Generator danych losowych przydatny dla testerów oprogramowania. API zwraca dane w formie JSON."/>
+    <meta name = "keywords" content="generator, danych, losowe, dane, tester oprogramowania, generator danych testowych, dane testowe, losowe dane" />
+    <link rel="stylesheet" href="style.css" type ="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div id="logo">Generator danych losowych</div>
+        <article>
+            <div class ="text"><h1 id ="texth">Serwis Generator Danych Losowych API w odpowiedzi na zapytania GET wysyła klientom HTTP dane FIKCYJNEJ osoby.
+                 Generator łączy losowe imię, nazwisko i adres, tworząc za każdym razem niepowtarzającą się kombinację danych.</h1>
+                 <h2>Instrukcja Obsługi</h2>
+                <p>Dostępne zapytania: <span class="orange">male, female, person, pesel, id</span></p>
+                <p>Kierujemy na adres: <span class="link">polaknamegenerator.pl/api/</span><span class="orange">{zapytanie}</span></p>
+                <br>
+                <ul id="lista">
+                    <li><span class="link">polaknamegenerator.pl/api/</span><span class="orange">male</span> - zwraca imię, nazwisko, adres, pesel oraz numer dowodu losowego mężczyzny.</li>
+                    <li><span class="link">polaknamegenerator.pl/api/</span><span class="orange">female</span> - zwraca imię, nazwisko, adres, pesel oraz numer dowodu losowej kobiety.</li>
+                    <li><span class="link">polaknamegenerator.pl/api/</span><span class="orange">person</span> - zwraca pełne dane losowej kobiety albo mężczyzny.</li>
+                    <li><span class="link">polaknamegenerator.pl/api/</span><span class="orange">pesel</span> - zwraca losowy numer pesel wygenerowany zgodnie z algorytmem używanym w Polsce.</li>
+                    <li><span class="link">polaknamegenerator.pl/api/</span><span class="orange">id</span> - zwraca losowy numer dowodu osobistego, wygenerowany zgodnie z algorytmem używanym w Polsce.</li>
+                
+            </ul>
+            <br>
+            <br>
+            <span id = "bottom">Dane są zwracane w formacie JSON. Serwis wykonałem w trakcie mojej nauki programowania. Głównym celem projektu było stworzenie generatora danych testowych. W razie pomysłów na poszerzenie możliwości generatora, proszę o kontakt mailowy. </span>
+            </div></article>
+			<div id="footer">autor: Konrad Studnicki kontakt: alucardkrk@gmail.com</div>
+    </div>
+
+
+</body>
+</html>
