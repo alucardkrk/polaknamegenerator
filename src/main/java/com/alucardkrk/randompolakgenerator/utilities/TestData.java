@@ -11,18 +11,15 @@ import java.sql.SQLException;
 public class TestData {
     Connection connection;
 
-
-
-
-
+    public TestData() {
+        connection = DatabaseConnection.getConnection();
+    }
 
     public String getRandomPersonParam(String param, String table) throws SQLException {
         ResultSet resultSet = getQueryResult("SELECT "+param+" FROM "+ table +" ORDER BY Rand() LIMIT 1");
         String result = "";
-
         resultSet.next();
         result = resultSet.getString(param);
-        connection.close();
         return result.substring(0,1).toUpperCase() + result.substring(1).toLowerCase();
 
     }
@@ -32,6 +29,7 @@ public class TestData {
         String surname = getRandomPersonParam("nazwisko", "nazwiska_zenskie");
         String city = getRandomPersonParam("nazwa", "miasta");
         String street = getRandomPersonParam("nazwa", "ulice");
+        connection.close();
         return new Woman(name, surname,city,street);
     }
     public Man generateRandomMan() throws SQLException {
@@ -39,6 +37,7 @@ public class TestData {
         String surname = getRandomPersonParam("nazwisko", "nazwiska_meskie");
         String city = getRandomPersonParam("nazwa", "miasta");
         String street = getRandomPersonParam("nazwa", "ulice");
+        connection.close();
         return new Man(name, surname,city,street);
     }
 
@@ -46,7 +45,7 @@ public class TestData {
 
     private ResultSet getQueryResult(String query){
 
-        connection = DatabaseConnection.getConnection();
+
         try {
             PreparedStatement statement = connection.prepareStatement(query);
             return statement.executeQuery();
